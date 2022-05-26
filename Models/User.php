@@ -33,7 +33,7 @@ class User
         $actual_year = intval(substr((date("Y")), -2));
         //var_dump($month, $year);
         //var_dump($actual_month, $actual_year);
-        var_dump($year, $actual_year, $month, $actual_month);
+        //var_dump($year, $actual_year, $month, $actual_month);
         if ($year > $actual_year) {
             $this->payment_expired = false;
             var_dump('Payment Ok');
@@ -46,7 +46,3 @@ class User
         }
     }
 }
-/* else{
-    $this->payment_expired = true;
-   var_dump('Payment expired');
-} */
