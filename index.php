@@ -10,18 +10,19 @@ $products = [
     new Kennel(200, 100, 'Kennel Integrale', 'Lorem', ['dog'], 'https://picsum.photos/200/300', 'Kennel', 'XL', 10),
 ];
 
+//$actual_date = date();
+var_dump(date("Y"), date("m"));
 
 
-
-//$active_user = new User('SirAlyon', 'Alessio', 'Sada', 'alessiosada04@gmai.com', '234242341', 'Viale Virgilio', '1234 1234 1243 1234/12/24/131', false);
+$active_user = new User('SirAlyon', 'Alessio', 'Sada', 'alessiosada04@gmai.com', '234242341', 'Viale Virgilio', 1234123412431234, '12/22', 131, false);
 
 
 foreach($products as $product){
     $product->setDiscount($active_user);
 };
 
-var_dump($products);
+var_dump($products, $active_user);
 
-
+var_dump($active_user->setPaymentExpired())
 
 ?>
