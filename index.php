@@ -1,29 +1,40 @@
 <?php
-$active_user = null;
 include __DIR__ . '/Models/Products.php';
 include __DIR__ . '/Models/Food.php';
 include __DIR__ . '/Models/Kennel.php';
 include __DIR__ . '/Models/User.php';
+
+$active_user = null;
 
 $products = [
     new Food(50, 100, 'Crocchette Pesce e Patate', 'Lorem ipsum dolor sit amet.', ['dog'], 'https://picsum.photos/400', 14),
     new Kennel(200, 100, 'Kennel Integrale', 'Kennel integrale per cani taglia XL', ['dog'], 'https://picsum.photos/400', 'Kennel', 'XL', 10),
 ];
 
-//$actual_date = date();
-var_dump(date("Y"), date("m"));
+/* $actual_date = date();
+var_dump(date("Y"), date("m")); */
 
 
-$active_user = new User('SirAlyon', 'Alessio', 'Sada', 'alessiosada04@gmai.com', '234242341', 'Viale Virgilio', 1234123412431234, '12/22', 131, false);
-
+//$active_user = new User('SirAlyon', 'Alessio', 'Sada', 'alessiosada04@gmai.com', '234242341', 'Viale Virgilio', 1234123412431234, '12/22', 131, false);
+//Commenta riga 18 per verificare l'Exception
 
 foreach ($products as $product) {
-    $product->setDiscount($active_user);
+    try {
+        $product->setDiscount($active_user);;
+    } catch (Exception $e) {
+        echo 'ERROR:' . $e->getMessage() . $e->getLine(); //ciclando mostra un erorre per ogni prodotto non trovato
+    }
 };
+
+if ($active_user){
+    $active_user->setPaymentExpired();
+}
+
+
+
 
 var_dump($products, $active_user);
 
-$active_user->setPaymentExpired()
 
 ?>
 
@@ -79,4 +90,3 @@ $active_user->setPaymentExpired()
 </body>
 
 </html>
-
