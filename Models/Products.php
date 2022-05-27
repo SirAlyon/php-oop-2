@@ -21,16 +21,26 @@ class Products {
     }
     public function setDiscount($user)
     {
-        if ($user !== null){
-            $this->discount = 20;
-            $this->getFinalPrice();
-        }
+        
+        $this->checkUser($user);
+        $this->discount = 20;
+        $this->getFinalPrice();
         
     }
 
     public function getFinalPrice()
     {
-        $this->final_price = $this->price - ($this->price *20 / 100);
+        $this->final_price = $this->price - ($this->price * $this->discount / 100);
+    }
+
+    public function checkUser($user)
+    {
+        var_dump('im working :)');
+        if (!$user || gettype($user) != 'object'){
+            throw new Exception('user is null or not an object');
+        }
+        return;
     }
 
 }
+
