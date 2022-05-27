@@ -4,6 +4,8 @@ include __DIR__ . '/Models/Food.php';
 include __DIR__ . '/Models/Kennel.php';
 include __DIR__ . '/Models/User.php';
 
+
+
 $active_user = null;
 
 $products = [
@@ -30,11 +32,14 @@ if ($active_user){
     $active_user->setPaymentExpired();
 }
 
+//var_dump($products, $active_user);
 
 
-
-var_dump($products, $active_user);
-
+//uso il trait 
+foreach ($products as $product){
+    //$product->dump('title');
+    $product->getFullInfo('title', 'description', 'price');
+}
 
 ?>
 

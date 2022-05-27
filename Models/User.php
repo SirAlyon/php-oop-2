@@ -26,7 +26,7 @@ class User
     }
 
     public function setPaymentExpired()
-    {
+    {   
         $month = intval(substr($this->card_expire, 0, -3));
         $year = intval(substr($this->card_expire, -2));
         $actual_month = intval(date("m"));
