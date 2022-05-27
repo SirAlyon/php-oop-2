@@ -20,13 +20,15 @@ var_dump(date("Y"), date("m")); */
 //$active_user = new User('SirAlyon', 'Alessio', 'Sada', 'alessiosada04@gmai.com', '234242341', 'Viale Virgilio', 1234123412431234, '12/22', 131, false);
 //Commenta riga 18 per verificare l'Exception
 
-foreach ($products as $product) {
+ foreach ($products as $product) {
     try {
         $product->setDiscount($active_user);;
     } catch (Exception $e) {
-        echo 'ERROR:' . $e->getMessage() . $e->getLine(); //ciclando mostra un erorre per ogni prodotto non trovato
+        echo 'ERROR:' . $e->getMessage() .' ' .'line:' .$e->getLine(); //ciclando mostra un erorre per ogni prodotto non trovato
     }
-};
+}; 
+
+
 
 if ($active_user){
     $active_user->setPaymentExpired();
