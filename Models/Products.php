@@ -1,19 +1,11 @@
 <?php
-trait first_trait {
-    public function dump($something) {
-        var_dump($this->$something);
-    }
-    public function getFullInfo($v1, $v2, $v3)
-    {
-        var_dump($this->$v1, $this->$v2, $this->$v3);
-    }
-}
+include __DIR__ . '/FirstTrait.php';
 
 class Products {
     use first_trait;
 
     public $price;
-    public $final_price;
+    public $final_price;    
     public $quantity;
     public $title;
     public $description;
@@ -45,14 +37,7 @@ class Products {
         $this->final_price = $this->price - ($this->price * $this->discount / 100);
     }
 
-    public function checkUser($user)
-    {
-        var_dump('im working :)');
-        if (!$user || gettype($user) != 'object'){
-            throw new Exception('user is null or not an object');
-        }
-        return;
-    }
+    
 
 }
 
